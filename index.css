@@ -1,0 +1,67 @@
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #1b2430;
+  --muted: #5d6b7c;
+  --line: #dde3ea;
+  --accent: #1f5fbf;
+  --accent-ink: #ffffff;
+  --danger: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12171e;
+    --surface: #1a212b;
+    --ink: #e8edf3;
+    --muted: #9aa8b8;
+    --line: #2b3542;
+    --accent: #6ea2f0;
+    --accent-ink: #0d1520;
+    --danger: #f2877f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.page { max-width: 1040px; margin: 0 auto; padding: 32px 20px; }
+
+.page-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; }
+.page-head h1 { margin: 0; font-size: 1.75rem; }
+.page-head p { margin: 0; color: var(--muted); }
+
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.panel h2 { margin: 0 0 16px; font-size: 1.1rem; }
+
+.form { display: flex; flex-direction: column; gap: 14px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem; color: var(--muted); }
+.form input {
+  padding: 9px 11px; font: inherit; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 6px;
+}
+.form input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+button {
+  padding: 10px 14px; font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 6px;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+
+.muted { color: var(--muted); margin: 0; }
+.error { color: var(--danger); margin: 0 0 12px; }
